@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="uri" default="radio://0/80/2M" />
+
+ <include file="$(find crazyflie_driver)/launch/crazyflie_server.launch">
+  </include>
+  <group ns="crazyflie">
+
+    <include file="$(find crazyflie_driver)/launch/crazyflie_add.launch">
+      <arg name="uri" value="$(arg uri)" />
+      <arg name="tf_prefix" value="crazyflie" />
+      <arg name="enable_logging" value="True" />
+    </include>
+
+  </group>
+<!--uncomment if you need rviz visualization 
+ <node pkg="rviz" type="rviz" name="rviz" args="-d $(find crazyflie_demo)/launch/crazyflie.rviz" />-->
+ 
+ <!--
+ Add your nodes here, or launch minimal launch before running your own code
+ -->
+
+</launch>
